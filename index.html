@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Friends Suzuki Center | 25 Years of Trust | 35F Block, Sri Ganganagar</title>
+  <meta name="description" content="Friends Suzuki Center - Sri Ganganagar's trusted two-wheeler workshop at 35F Block with 25 Years of Trust. General bike service + washing starting at ₹349. Genuine Suzuki parts & certified mechanics." />
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Teko:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Three.js for 3D Bike Model (with resilient offline blueprint fallback) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body class="intro-active">
+
+  <!-- ================================================================= -->
+  <!-- 🏍️ 1. WEBSITE OPENING ANIMATION: PHYSICS WORKSHOP INTRO SCREEN -->
+  <!-- ================================================================= -->
+  <section id="intro-screen" class="intro-overlay" aria-label="Workshop Intro Animation">
+    <!-- Canvas for falling & draggable tools -->
+    <canvas id="physics-canvas"></canvas>
+
+    <!-- Center UI Card in front of canvas -->
+    <div class="intro-content">
+      <div class="intro-badge">
+        <span class="pulse-dot"></span>
+        <span>35F BLOCK, SRI GANGANAGAR • 25 YEARS OF TRUST</span>
+      </div>
+
+      <!-- FSC Logo & Branding -->
+      <div class="intro-logo-box">
+        <div class="fsc-logo-wrap">
+          <img 
+            src="C:/Users/india/.gemini/antigravity/brain/bbf5953f-c421-4d90-a708-9dcb35469b47/.user_uploaded/media_1789379874933.jpg"
+            alt="Friends Suzuki Center - FSC Logo"
+            class="fsc-logo-img"
+          />
+        </div>
+      </div>
+
+      <!-- Service Sub-lines -->
+      <div class="intro-service-subtext">
+        <span class="intro-service-line1">All Motorcycle &amp; Scooter Repair &amp; Service</span>
+        <span class="intro-service-line2">Hero • Honda • Bajaj • Suzuki • Activa &amp; All Other Two-Wheelers</span>
+      </div>
+
+      <p class="intro-tagline">
+        <i class="fa-solid fa-screwdriver-wrench"></i>
+        <span>Touch or Drag Tools on Screen • Interactive Workshop</span>
+      </p>
+
+      <!-- Physics Tool Controls Hint -->
+      <div class="physics-hint">
+        <span class="mouse-icon"><i class="fa-solid fa-hand-pointer"></i></span>
+        <span>Click, drag & throw falling spanners, wrenches & bolts!</span>
+      </div>
+
+      <!-- Action Buttons to Enter -->
+      <div class="intro-actions">
+        <button id="btn-enter-workshop" class="btn-enter" type="button">
+          <span class="btn-icon"><i class="fa-solid fa-key"></i></span>
+          <span class="btn-text">ENTER WORKSHOP</span>
+          <span class="btn-subtext">कार्यशाला में प्रवेश करें</span>
+          <span class="btn-shine"></span>
+        </button>
+
+        <button id="btn-sound-toggle" class="btn-sound-toggle" title="Toggle Sound Effects" type="button">
+          <i class="fa-solid fa-volume-high"></i>
+        </button>
+      </div>
+
+      <div class="intro-footer-notice">
+        <span>📍 35F Block, Sri Ganganagar, Rajasthan — 335001 | 📞 98875-98016, 98873-20149</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================= -->
+  <!-- 🏠 2. MAIN WEBSITE -->
+  <!-- ================================================================= -->
+  <div id="main-website" class="main-website">
+    
+    <!-- Background Moving Workshop Ambiance & Particles -->
+    <div class="workshop-ambient-bg" aria-hidden="true">
+      <div class="grid-lines"></div>
+      <div class="gear-watermark gear-left"></div>
+      <div class="gear-watermark gear-right"></div>
+      <div class="spark-emitter" id="spark-container"></div>
+    </div>
+
+    <!-- TOP ANNOUNCEMENT & CONTACT BAR -->
+
+    <!-- HEADER / NAVIGATION -->
+    <header class="main-header" id="header">
+      <div class="container header-container">
+        <!-- Logo -->
+        <a href="#hero" class="brand-logo">
+          <div class="logo-mark fsc-header-logo-wrap">
+            <img 
+              src="C:/Users/india/.gemini/antigravity/brain/bbf5953f-c421-4d90-a708-9dcb35469b47/.user_uploaded/media_1789379874933.jpg"
+              alt="FSC Logo"
+              class="fsc-header-logo-img"
+            />
+          </div>
+          <div class="logo-text">
+            <span class="name">FRIENDS SUZUKI CENTER</span>
+            <span class="service-subline-1">All Motorcycle &amp; Scooter Repair &amp; Service</span>
+            <span class="service-subline-2">Hero • Honda • Bajaj • Suzuki • Activa &amp; All Two-Wheelers</span>
+            <span class="tag">35F BLOCK • SRI GANGANAGAR</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav" aria-label="Main Navigation">
+          <ul class="nav-list">
+            <li><a href="#hero" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#interactive-bike-section" class="nav-link"><i class="fa-solid fa-motorcycle"></i> 3D Bike Studio</a></li>
+            <li><a href="#services" class="nav-link"><i class="fa-solid fa-gears"></i> Services</a></li>
+            <li><a href="#about" class="nav-link"><i class="fa-solid fa-shield-halved"></i> 25 Years Trust</a></li>
+            <li><a href="#reviews" class="nav-link"><i class="fa-solid fa-star"></i> Reviews</a></li>
+            <li><a href="#location" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Contact</a></li>
+          </ul>
+        </nav>
+
+        <!-- Header Actions / Mobile Toggle -->
+        <div class="header-actions">
+          <!-- Mobile Hamburger Toggle -->
+          <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div class="mobile-drawer" id="mobile-drawer">
+        <ul class="mobile-nav-list">
+          <li><a href="#hero" class="mobile-link"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li><a href="#interactive-bike-section" class="mobile-link"><i class="fa-solid fa-motorcycle"></i> 3D Bike Studio</a></li>
+          <li><a href="#services" class="mobile-link"><i class="fa-solid fa-gears"></i> Services (From ₹349)</a></li>
+          <li><a href="#about" class="mobile-link"><i class="fa-solid fa-shield-halved"></i> 25 Years of Trust</a></li>
+          <li><a href="#location" class="mobile-link"><i class="fa-solid fa-map-location-dot"></i> 35F Block, Sri Ganganagar</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <!-- =============================================================== -->
+    <!-- 🚀 HERO SECTION — PREMIUM REDESIGN -->
+    <!-- =============================================================== -->
+    <section id="hero" class="hero-section">
+
+      <!-- Animated background grid lines -->
+      <div class="hero-bg-grid" aria-hidden="true"></div>
+
+      <!-- Floating glow orbs -->
+      <div class="hero-orb hero-orb-red"   aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-blue"  aria-hidden="true"></div>
+
+      <div class="container hero-container">
+
+        <!-- ── LEFT: Text Content ── -->
+        <div class="hero-text-col">
+
+          <!-- Top label badge -->
+          <div class="hero-label-badge">
+            <span class="hero-label-dot"></span>
+            <span>SRI GANGANAGAR'S TRUSTED WORKSHOP • EST. 25+ YEARS</span>
+          </div>
+
+          <!-- Main headline -->
+          <h1 class="hero-headline">
+            <span class="hero-brand-title">FRIENDS SUZUKI CENTER</span>
+            <span class="hero-service-tagline">All Motorcycle &amp; Scooter Repair &amp; Service</span>
+          </h1>
+
+          <!-- Key value props -->
+          <div class="hero-props">
+            <div class="hero-prop">
+              <i class="fa-solid fa-bolt"></i>
+              <span>Expert Service</span>
+            </div>
+            <div class="hero-prop-sep">•</div>
+            <div class="hero-prop">
+              <i class="fa-solid fa-certificate"></i>
+              <span>Genuine Parts</span>
+            </div>
+            <div class="hero-prop-sep">•</div>
+            <div class="hero-prop">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>Reliable Work</span>
+            </div>
+          </div>
+
+          <!-- CTA Buttons — only non-duplicate ones (floating bar has Book + WhatsApp) -->
+          <div class="hero-cta-group">
+            <a href="#services" class="btn-hero-explore">
+              <i class="fa-solid fa-gears"></i>
+              <span>Explore Services</span>
+            </a>
+            <a href="tel:+919887598016" class="btn-hero-call">
+              <i class="fa-solid fa-phone-volume"></i>
+              <span>98875-98016</span>
+            </a>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="hero-stats-strip">
+            <div class="hero-stat">
+              <span class="hstat-num">25+</span>
+              <span class="hstat-label">Years Trust</span>
+            </div>
+            <div class="hstat-div"></div>
+            <div class="hero-stat">
+              <span class="hstat-num">₹349</span>
+              <span class="hstat-label">Service + Wash</span>
+            </div>
+            <div class="hstat-div"></div>
+            <div class="hero-stat">
+              <span class="hstat-num">6</span>
+              <span class="hstat-label">Days Open</span>
+            </div>
+            <div class="hstat-div"></div>
+            <div class="hero-stat">
+              <span class="hstat-num">All</span>
+              <span class="hstat-label">Brands</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- ── RIGHT: Visual Panel ── -->
+        <div class="hero-visual-col">
+          <div class="hero-visual-card">
+
+            <!-- Glowing ring decoration -->
+            <div class="visual-ring-outer" aria-hidden="true"></div>
+            <div class="visual-ring-inner" aria-hidden="true"></div>
+
+            <!-- FSC Logo large display -->
+            <div class="hero-logo-display">
+              <img
+                src="C:/Users/india/.gemini/antigravity/brain/bbf5953f-c421-4d90-a708-9dcb35469b47/.user_uploaded/media_1789379874933.jpg"
+                alt="Friends Suzuki Center — FSC"
+                class="hero-fsc-logo"
+              />
+            </div>
+
+            <!-- Floating info chips -->
+            <div class="hero-chip hero-chip-top">
+              <i class="fa-solid fa-map-pin"></i>
+              <span>35F Block, Sri Ganganagar</span>
+            </div>
+            <div class="hero-chip hero-chip-bottom">
+              <i class="fa-solid fa-clock"></i>
+              <span>Mon – Sat &nbsp;|&nbsp; 9AM – 8:30PM</span>
+            </div>
+
+            <!-- Corner accent lines -->
+            <div class="corner-tl" aria-hidden="true"></div>
+            <div class="corner-br" aria-hidden="true"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom brands marquee strip -->
+      <div class="hero-brands-strip">
+        <div class="brands-marquee-track">
+          <span>Hero</span><span class="bsep">⚡</span>
+          <span>Honda</span><span class="bsep">⚡</span>
+          <span>Bajaj</span><span class="bsep">⚡</span>
+          <span>Suzuki</span><span class="bsep">⚡</span>
+          <span>TVS</span><span class="bsep">⚡</span>
+          <span>Yamaha</span><span class="bsep">⚡</span>
+          <span>Royal Enfield</span><span class="bsep">⚡</span>
+          <span>KTM</span><span class="bsep">⚡</span>
+          <span>Activa</span><span class="bsep">⚡</span>
+          <!-- duplicate for seamless loop -->
+          <span>Hero</span><span class="bsep">⚡</span>
+          <span>Honda</span><span class="bsep">⚡</span>
+          <span>Bajaj</span><span class="bsep">⚡</span>
+          <span>Suzuki</span><span class="bsep">⚡</span>
+          <span>TVS</span><span class="bsep">⚡</span>
+          <span>Yamaha</span><span class="bsep">⚡</span>
+          <span>Royal Enfield</span><span class="bsep">⚡</span>
+          <span>KTM</span><span class="bsep">⚡</span>
+          <span>Activa</span><span class="bsep">⚡</span>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- 🛠️ 3. INTERACTIVE 3D BIKE EXPLORER -->
+    <!-- =============================================================== -->
+    <section id="interactive-bike-section" class="interactive-bike-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-vr-cardboard"></i>
+            <span>3D INTERACTIVE WORKSHOP EXPLORER</span>
+          </div>
+          <h2 class="section-title">Explore Your Bike & Diagnostic Points</h2>
+          <p class="section-subtitle">
+            Rotate the model with your mouse. Click on the glowing pins (<strong>Engine, Brakes, Tyres, Battery, Exhaust</strong>) to reveal exact service procedures, repair diagnostics, and instant pricing.
+          </p>
+        </div>
+
+        <div class="bike-studio-wrapper">
+          <!-- 3D Canvas Container -->
+          <div class="canvas-3d-container" id="canvas-3d-container">
+            <canvas id="three-bike-canvas"></canvas>
+
+            <!-- 3D Controls Helper Overlay -->
+            <div class="studio-controls-hint">
+              <span><i class="fa-solid fa-arrows-rotate"></i> Drag to Rotate 360°</span>
+              <span><i class="fa-solid fa-magnifying-glass-plus"></i> Scroll to Zoom</span>
+              <button id="btn-reset-camera" class="btn-cam-reset" title="Reset View" type="button">
+                <i class="fa-solid fa-crosshairs"></i> Reset View
+              </button>
+            </div>
+
+            <!-- Quick Part Selector Buttons on Top of Canvas -->
+            <div class="quick-part-selector" role="tablist">
+              <button class="part-btn active" data-part="engine" type="button">
+                <i class="fa-solid fa-bolt-lightning"></i> Engine
+              </button>
+              <button class="part-btn" data-part="brakes" type="button">
+                <i class="fa-solid fa-circle-stop"></i> Brakes
+              </button>
+              <button class="part-btn" data-part="tyres" type="button">
+                <i class="fa-solid fa-ring"></i> Tyres & Rims
+              </button>
+              <button class="part-btn" data-part="battery" type="button">
+                <i class="fa-solid fa-car-battery"></i> Electricals
+              </button>
+              <button class="part-btn" data-part="exhaust" type="button">
+                <i class="fa-solid fa-oil-can"></i> Oil & Tuning
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Service Diagnostic Inspector Card (Side Panel) -->
+          <div class="bike-inspector-panel" id="bike-inspector-panel">
+            <div class="inspector-header">
+              <div class="part-icon-wrap" id="inspector-icon">
+                <i class="fa-solid fa-bolt-lightning"></i>
+              </div>
+              <div class="inspector-title-wrap">
+                <span class="inspector-badge" id="inspector-badge">CRITICAL DIAGNOSTIC</span>
+                <h3 class="inspector-title" id="inspector-title">Engine Service & Tuning</h3>
+              </div>
+            </div>
+
+            <p class="inspector-desc" id="inspector-desc">
+              Comprehensive Suzuki engine health check including valve clearance calibration, carburettor/EFI ultrasonic cleaning, spark plug check, and compression testing to restore maximum mileage & power.
+            </p>
+
+            <div class="inspector-specs">
+              <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-clipboard-check"></i> Checks Included:</span>
+                <span class="spec-value" id="inspector-checks">14-Point Engine Checkup</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-clock"></i> Service Duration:</span>
+                <span class="spec-value" id="inspector-time">~90 - 120 Minutes</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-tag"></i> Estimated Cost:</span>
+                <span class="spec-value highlight-price" id="inspector-price">Starting ₹499*</span>
+              </div>
+              <div class="spec-row">
+                <span class="spec-label"><i class="fa-solid fa-shield"></i> Warranty:</span>
+                <span class="spec-value" id="inspector-warranty">30-Day Service Guarantee</span>
+              </div>
+            </div>
+
+            <div class="inspector-actions">
+              <button class="btn-inspector-book open-booking-btn" id="inspector-book-btn" type="button" data-service="Engine Service & Tuning">
+                <i class="fa-solid fa-calendar-check"></i>
+                <span>Book This Service</span>
+              </button>
+              <a href="https://wa.me/919887598016?text=Hi,%20I%20want%20to%20ask%20about%20Engine%20Service%20at%20Friends%20Suzuki%20Center%2035F%20Block%20Sri%20Ganganagar." target="_blank" rel="noopener noreferrer" class="btn-inspector-wa" id="inspector-wa-btn">
+                <i class="fa-brands fa-whatsapp"></i>
+                <span>WhatsApp (98875-98016)</span>
+              </a>
+            </div>
+
+            <div class="inspector-tip">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>Tip: Regular engine tuning every 3,000 km boosts fuel efficiency by up to 18%.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- 🔧 4. WORKSHOP SERVICES SECTION -->
+    <!-- =============================================================== -->
+    <section id="services" class="services-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-wrench"></i>
+            <span>EXPERT SOLUTIONS</span>
+          </div>
+          <h2 class="section-title">Comprehensive Workshop Services</h2>
+          <p class="section-subtitle">
+            Starting service charges only <strong>₹349 (includes complete service + pressure foam washing)</strong>. Authorized care for all scooters and bikes in Sri Ganganagar.
+          </p>
+        </div>
+
+        <!-- Service Cards Grid -->
+        <div class="services-grid">
+          
+          <!-- 1. General Bike Service (Updated with Service + Washing & ₹349) -->
+          <article class="service-card" style="border-color: rgba(0, 102, 255, 0.45); box-shadow: 0 0 25px rgba(0, 102, 255, 0.15);">
+            <div class="card-glow" style="opacity: 1;"></div>
+            <div class="service-header">
+              <div class="service-icon-box blue-accent">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+              </div>
+              <span class="service-tag" style="background: rgba(37, 211, 102, 0.15); color: #25d366; border: 1px solid rgba(37, 211, 102, 0.4);">SERVICE + WASHING INCLUDED</span>
+            </div>
+            <h3 class="service-name">General Bike Service + Washing</h3>
+            <p class="service-summary">
+              Complete periodic maintenance package with high-pressure foam wash included! Full 24-point bumper-to-bumper checkup, air filter cleaning, chain lubrication, clutch tuning, and throttle calibration.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check"></i> <strong style="color: #ffffff;">Complete Bike Service + Foam Wash Included</strong></li>
+              <li><i class="fa-solid fa-check"></i> Air & Oil Filter Inspection & Cleaning</li>
+              <li><i class="fa-solid fa-check"></i> Clutch & Accelerator Cable Free-play Tuning</li>
+              <li><i class="fa-solid fa-check"></i> Front & Rear Brake De-dusting & Adjustment</li>
+              <li><i class="fa-solid fa-check"></i> Drive Chain Cleaning & Spray Lubrication</li>
+            </ul>
+            <div class="service-footer">
+              <div class="price-box">
+                <span class="starting-label">Starting Service Charges</span>
+                <span class="price-val" style="color: var(--accent-gold);">₹349 <small style="font-size: 0.75rem; color: #94a3b8; font-weight: 500;">(Service + Washing)</small></span>
+              </div>
+              <button class="btn-card-book open-booking-btn" data-service="General Bike Service + Washing (₹349)" type="button">Book Now</button>
+            </div>
+          </article>
+
+          <!-- 2. Engine Repair & Overhaul -->
+          <article class="service-card">
+            <div class="card-glow"></div>
+            <div class="service-header">
+              <div class="service-icon-box red-accent">
+                <i class="fa-solid fa-gears"></i>
+              </div>
+              <span class="service-tag">PRECISION WORK</span>
+            </div>
+            <h3 class="service-name">Engine Repair & Overhaul</h3>
+            <p class="service-summary">
+              Engine sound troubleshooting, smoke elimination, cylinder re-boring, piston ring replacement, camshaft timing, and complete overhaul.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check"></i> White/Black Smoke Resolution</li>
+              <li><i class="fa-solid fa-check"></i> Piston, Crank & Valve Grinding</li>
+              <li><i class="fa-solid fa-check"></i> 100% Genuine Suzuki Engine Parts</li>
+              <li><i class="fa-solid fa-check"></i> Complete Leakage Proofing</li>
+            </ul>
+            <!-- Engine Service Labour Pricing -->
+            <div class="engine-price-table">
+              <div class="engine-price-row">
+                <span class="engine-service-type">
+                  <i class="fa-solid fa-gears"></i> Full Engine Service
+                </span>
+                <span class="engine-price-val">₹1,499</span>
+              </div>
+              <div class="engine-price-row">
+                <span class="engine-service-type">
+                  <i class="fa-solid fa-gear"></i> Half Engine Service
+                </span>
+                <span class="engine-price-val">₹999</span>
+              </div>
+              <div class="engine-labour-badge">
+                <i class="fa-solid fa-circle-info"></i> Labour / Service Charges Only
+              </div>
+            </div>
+
+            <p class="engine-price-note">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <strong>Note:</strong> These prices are for labour/service charges only.
+              Engine oil, spare parts, and any other required materials will be charged
+              separately according to the work required.
+            </p>
+
+            <div class="service-footer" style="margin-top: 14px;">
+              <button class="btn-card-book open-booking-btn" data-service="Engine Repair &amp; Overhaul" type="button" style="width:100%; justify-content:center;">Book Engine Service</button>
+            </div>
+          </article>
+
+          <!-- 3. Engine Oil & Lubrication -->
+          <article class="service-card">
+            <div class="card-glow"></div>
+            <div class="service-header">
+              <div class="service-icon-box gold-accent">
+                <i class="fa-solid fa-oil-can"></i>
+              </div>
+              <span class="service-tag">QUICK 15 MIN</span>
+            </div>
+            <h3 class="service-name">Oil Change & Lube</h3>
+            <p class="service-summary">
+              Premium Suzuki Ecstar, Motul, and Castrol 100% synthetic & semi-synthetic engine oils. Includes engine flush & magnetic drain plug cleaning.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check"></i> Suzuki Ecstar OEM 10W40 / 10W30</li>
+              <li><i class="fa-solid fa-check"></i> Fresh O-Ring & Sump Gasket</li>
+              <li><i class="fa-solid fa-check"></i> Drive Chain Clean & Lube Spray</li>
+              <li><i class="fa-solid fa-check"></i> Old Oil Environment-Safe Disposal</li>
+            </ul>
+            <div class="service-footer" style="justify-content:flex-end;">
+              <button class="btn-card-book open-booking-btn" data-service="Oil Change &amp; Lubrication" type="button">Book Now</button>
+            </div>
+          </article>
+
+          <!-- 4. Brake Service -->
+          <article class="service-card">
+            <div class="card-glow"></div>
+            <div class="service-header">
+              <div class="service-icon-box red-accent">
+                <i class="fa-solid fa-circle-stop"></i>
+              </div>
+              <span class="service-tag">SAFETY FIRST</span>
+            </div>
+            <h3 class="service-name">Brake Overhaul & Bleeding</h3>
+            <p class="service-summary">
+              Front disc brake pad replacement, master cylinder cleaning, DOT4 hydraulic fluid bleeding, rear drum brake shoe cleaning, and CBS tuning.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check"></i> Ceramic / Sintered Brake Pads</li>
+              <li><i class="fa-solid fa-check"></i> Disc Rotor Inspection & Truing</li>
+              <li><i class="fa-solid fa-check"></i> Hydraulic Bubble Removal</li>
+              <li><i class="fa-solid fa-check"></i> Combined Braking System (CBS) Tune</li>
+            </ul>
+            <div class="service-footer" style="justify-content:flex-end;">
+              <button class="btn-card-book open-booking-btn" data-service="Brake System Service" type="button">Book Now</button>
+            </div>
+          </article>
+
+          <!-- 5. Electrical & Battery Repair -->
+          <article class="service-card">
+            <div class="card-glow"></div>
+            <div class="service-header">
+              <div class="service-icon-box blue-accent">
+                <i class="fa-solid fa-car-battery"></i>
+              </div>
+              <span class="service-tag">TECH DIAGNOSTIC</span>
+            </div>
+            <h3 class="service-name">Electrical & Battery Care</h3>
+            <p class="service-summary">
+              Self-start motor servicing, relay checking, computer EFI sensor diagnostics, LED headlight installation, Exide/Amaron battery testing & replacement.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check"></i> Self-Starter Carbon Brush Change</li>
+              <li><i class="fa-solid fa-check"></i> Stator Coil & RR Unit Testing</li>
+              <li><i class="fa-solid fa-check"></i> Wiring Short-Circuit Diagnosis</li>
+              <li><i class="fa-solid fa-check"></i> Digital Battery Load Analysis</li>
+            </ul>
+            <div class="service-footer" style="justify-content:flex-end;">
+              <button class="btn-card-book open-booking-btn" data-service="Electrical &amp; Battery Service" type="button">Book Now</button>
+            </div>
+          </article>
+
+          <!-- 6. Complete Bike Maintenance & Detailing -->
+          <article class="service-card">
+            <div class="card-glow"></div>
+            <div class="service-header">
+              <div class="service-icon-box cyan-accent">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+              </div>
+              <span class="service-tag">SHOWROOM SHINE</span>
+            </div>
+            <h3 class="service-name">Full Maintenance & Detailing</h3>
+            <p class="service-summary">
+              Teflon protective polish, ceramic coating, anti-rust underbody protection, scratch buffing, alloy wheel degrease, and long-term shine preservation.
+            </p>
+            <ul class="service-bullets">
+              <li><i class="fa-solid fa-check"></i> 3M Ceramic / Teflon Wax Polish</li>
+              <li><i class="fa-solid fa-check"></i> Anti-Rust Chassis Treatment</li>
+              <li><i class="fa-solid fa-check"></i> Fibre Body Scratch Lightening</li>
+              <li><i class="fa-solid fa-check"></i> Matte / Gloss Finish Enhancement</li>
+            </ul>
+            <div class="service-footer" style="justify-content:flex-end;">
+              <button class="btn-card-book open-booking-btn" data-service="Full Maintenance &amp; Detailing" type="button">Book Now</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- 🏍️ MULTI-BRAND SERVICE SECTION -->
+    <!-- =============================================================== -->
+    <section id="multi-brand" class="multi-brand-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span>ALL BRANDS SERVICED</span>
+          </div>
+          <h2 class="section-title">We Service All Two-Wheelers</h2>
+          <p class="section-subtitle">
+            Friends Suzuki Center provides expert repair &amp; service for <strong>all motorcycle and scooter brands</strong> — not just Suzuki.
+          </p>
+        </div>
+
+        <div class="brand-cards-grid">
+
+          <div class="brand-card">
+            <div class="brand-icon-box" style="background: linear-gradient(135deg,#e60012,#99000a);">
+              <i class="fa-solid fa-motorcycle"></i>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">Hero</h3>
+              <p class="brand-models">Splendor, HF Deluxe, Glamour, Passion, Xtreme, Xpulse, Destini</p>
+            </div>
+          </div>
+
+          <div class="brand-card">
+            <div class="brand-icon-box" style="background: linear-gradient(135deg,#cc0000,#880000);">
+              <i class="fa-solid fa-circle-h"></i>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">Honda</h3>
+              <p class="brand-models">Activa 125/6G, Shine, Unicorn, CB Hornet, SP125, Dio, Grazia</p>
+            </div>
+          </div>
+
+          <div class="brand-card">
+            <div class="brand-icon-box" style="background: linear-gradient(135deg,#005baa,#003366);">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">Bajaj</h3>
+              <p class="brand-models">Pulsar 150/180/NS200, Avenger, CT100, Platina, Chetak</p>
+            </div>
+          </div>
+
+          <div class="brand-card">
+            <div class="brand-icon-box" style="background: linear-gradient(135deg,#0066ff,#0033aa);">
+              <i class="fa-solid fa-s"></i>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">Suzuki</h3>
+              <p class="brand-models">Access 125, Burgman, Avenis, Gixxer 155/250, V-Strom, Hayabusa</p>
+            </div>
+          </div>
+
+          <div class="brand-card">
+            <div class="brand-icon-box" style="background: linear-gradient(135deg,#ff6600,#cc4400);">
+              <i class="fa-solid fa-gas-pump"></i>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">TVS</h3>
+              <p class="brand-models">Jupiter, Ntorq, Apache RTR 160/200, Radeon, Star City, Raider</p>
+            </div>
+          </div>
+
+          <div class="brand-card brand-card-all">
+            <div class="brand-icon-box" style="background: linear-gradient(135deg,#7c3aed,#4c1d95);">
+              <i class="fa-solid fa-wrench"></i>
+            </div>
+            <div class="brand-info">
+              <h3 class="brand-name">All Other Brands</h3>
+              <p class="brand-models">Royal Enfield, KTM, Yamaha, Kawasaki, Yezdi &amp; all two-wheelers</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="multi-brand-banner">
+          <i class="fa-solid fa-circle-check"></i>
+          <span>Bring any bike or scooter — <strong>all brands welcome</strong> at Friends Suzuki Center, 35F Block, Sri Ganganagar</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- ⭐ CUSTOMER REVIEWS SECTION -->
+    <!-- =============================================================== -->
+    <section id="reviews" class="reviews-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-star"></i>
+            <span>CUSTOMER REVIEWS</span>
+          </div>
+          <h2 class="section-title">What Our Customers Say</h2>
+          <p class="section-subtitle">
+            25 Years of Trust — backed by real reviews from real riders in Sri Ganganagar.
+          </p>
+        </div>
+
+        <!-- Review Submission Form -->
+        <div class="review-form-card">
+          <h3 class="review-form-title">
+            <i class="fa-solid fa-pen-to-square"></i> Share Your Experience
+          </h3>
+          <div class="review-form-inner">
+            <div class="form-group">
+              <label for="reviewer-name"><i class="fa-solid fa-user"></i> Your Name *</label>
+              <input type="text" id="reviewer-name" placeholder="e.g. Rahul Sharma" maxlength="60" />
+            </div>
+            <div class="form-group">
+              <label for="reviewer-bike"><i class="fa-solid fa-motorcycle"></i> Your Bike / Scooter</label>
+              <input type="text" id="reviewer-bike" placeholder="e.g. Suzuki Access 125, Honda Activa..." maxlength="60" />
+            </div>
+            <div class="form-group">
+              <label><i class="fa-solid fa-star"></i> Rating *</label>
+              <div class="star-rating-selector" id="star-selector" role="radiogroup" aria-label="Rate Friends Suzuki Center">
+                <button class="star-btn" data-star="1" type="button" aria-label="1 star">★</button>
+                <button class="star-btn" data-star="2" type="button" aria-label="2 stars">★</button>
+                <button class="star-btn" data-star="3" type="button" aria-label="3 stars">★</button>
+                <button class="star-btn" data-star="4" type="button" aria-label="4 stars">★</button>
+                <button class="star-btn" data-star="5" type="button" aria-label="5 stars">★</button>
+              </div>
+              <span class="star-label" id="star-label">Click to select a rating</span>
+              <input type="hidden" id="selected-rating" value="0" />
+            </div>
+            <div class="form-group">
+              <label for="reviewer-text"><i class="fa-regular fa-comment-dots"></i> Your Review *</label>
+              <textarea id="reviewer-text" rows="3" placeholder="Share your experience — service quality, staff behaviour, timing, pricing..." maxlength="500"></textarea>
+            </div>
+            <button id="submit-review-btn" class="btn-submit-review" type="button">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Submit Review</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Reviews Feed -->
+        <div class="reviews-feed" id="reviews-feed">
+          <!-- Reviews will be dynamically loaded from localStorage -->
+          <div class="reviews-empty-state" id="reviews-empty">
+            <i class="fa-regular fa-star"></i>
+            <p>Be the first to leave a review!</p>
+            <span>Your honest feedback helps other riders in Sri Ganganagar.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- 🏆 5. ABOUT US & WHY CHOOSE US (UPDATED WITH 25 YEARS OF TRUST) -->
+    <!-- =============================================================== -->
+    <section id="about" class="about-section">
+      <div class="container">
+        <div class="about-grid">
+          <div class="about-text-content">
+            <div class="section-tag">
+              <i class="fa-solid fa-award"></i>
+              <span>35F BLOCK, SRI GANGANAGAR</span>
+            </div>
+            <h2 class="section-title">Why Friends Suzuki Center Is Your #1 Choice</h2>
+            <p class="about-p">
+              Backed by <strong>25 Years of Trust</strong> and an uncompromising passion for two-wheelers, <strong>Friends Suzuki Center</strong> at 35F Block has been keeping Sri Ganganagar on the road with honest pricing, technical precision, and genuine spare parts.
+            </p>
+            <p class="about-p">
+              Whether you ride an everyday commuter <strong>Suzuki Access 125</strong>, a sporty <strong>Gixxer 250</strong>, or any other two-wheeler, our workshop is fitted with modern hydraulic lifts, pneumatic tools, and digital scan diagnostics.
+            </p>
+
+            <div class="reasons-list">
+              <div class="reason-item">
+                <div class="reason-icon"><i class="fa-solid fa-certificate"></i></div>
+                <div>
+                  <h4>100% Genuine Suzuki Spares</h4>
+                  <p>Direct authentic Suzuki parts with genuine barcodes & warranty support.</p>
+                </div>
+              </div>
+              <div class="reason-item">
+                <div class="reason-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <div>
+                  <h4>Affordable & Transparent Pricing (Starts ₹349)</h4>
+                  <p>Starting service charge of only ₹349 including bike service and high-pressure foam wash. Zero hidden fees.</p>
+                </div>
+              </div>
+              <div class="reason-item">
+                <div class="reason-icon"><i class="fa-solid fa-user-gear"></i></div>
+                <div>
+                  <h4>25 Years of Mechanical Excellence</h4>
+                  <p>Over 25 years of diagnostic experience in modern 4-stroke & FI scooter and motorcycle engines.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-stats-content">
+            <div class="experience-card">
+              <div class="big-num">25+</div>
+              <div class="exp-title">Years of Trust & Precision in Sri Ganganagar</div>
+              <div class="exp-badges">
+                <div class="exp-badge">
+                  <i class="fa-solid fa-motorcycle"></i>
+                  <span>All Suzuki Models & Two-Wheelers</span>
+                </div>
+                <div class="exp-badge">
+                  <i class="fa-solid fa-soap"></i>
+                  <span>Service + Washing Starting ₹349</span>
+                </div>
+                <div class="exp-badge">
+                  <i class="fa-solid fa-shield-cat"></i>
+                  <span>25 Years of Customer Trust</span>
+                </div>
+              </div>
+
+              <!-- Guarantee Quote Box -->
+              <div class="guarantee-quote">
+                <i class="fa-solid fa-quote-left"></i>
+                <p>“Aapki bike ko hum bilkul showroom condition ki tarah smooth aur safe bana kar dete hain — 25 saal se aapka vishwas.”</p>
+                <span class="quote-author">— Friends Suzuki Center Team, 35F Block</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- 📍 6. CONTACT & LOCATION SECTION (UPDATED WITH 35F BLOCK & TIMINGS) -->
+    <!-- =============================================================== -->
+    <section id="location" class="location-section">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="section-tag">
+            <i class="fa-solid fa-map-pin"></i>
+            <span>VISIT OUR WORKSHOP</span>
+          </div>
+          <h2 class="section-title">Friends Suzuki Center — 35F Block, Sri Ganganagar</h2>
+          <p class="section-subtitle">
+            Easily accessible location in Sri Ganganagar. Open Monday to Saturday with fast turnaround.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Info Card -->
+          <div class="contact-info-card">
+            <div class="shop-title-row">
+              <div class="suzuki-mini-badge">S</div>
+              <div>
+                <h3 class="shop-name">Friends Suzuki Center</h3>
+                <span class="shop-sub">35F Block, Sri Ganganagar • 25 Years Trust</span>
+              </div>
+            </div>
+
+            <div class="info-items">
+              <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div>
+                  <strong class="info-heading">Workshop Address</strong>
+                  <p class="info-text">
+                    <strong>Friends Suzuki Center</strong><br />
+                    35F Block, Sri Ganganagar, Rajasthan — 335001
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div>
+                  <strong class="info-heading">Phone Numbers (Direct Workshop)</strong>
+                  <p class="info-text">
+                    <a href="tel:+919887598016" class="contact-click" style="font-size: 1.05rem; color: #60a5fa;"><i class="fa-solid fa-phone"></i> 98875-98016</a><br />
+                    <a href="tel:+919887320149" class="contact-click" style="font-size: 1.05rem; color: #60a5fa;"><i class="fa-solid fa-phone"></i> 98873-20149</a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <div class="info-icon"><i class="fa-brands fa-whatsapp"></i></div>
+                <div>
+                  <strong class="info-heading">WhatsApp Booking & Service Inquiry</strong>
+                  <p class="info-text">
+                    <a href="https://wa.me/919887598016?text=Hello%20Friends%20Suzuki%20Center%2C%20I%20want%20to%20book%20a%20bike%20service%20in%20Sri%20Ganganagar.%0A%0ABike%20Model%3A%20%0AService%2FProblem%3A%20" target="_blank" rel="noopener noreferrer" class="contact-click wa-highlight">
+                      Chat on WhatsApp (+91 98875-98016) &rarr;
+                    </a>
+                  </p>
+                </div>
+              </div>
+
+              <div class="info-row">
+                <div class="info-icon"><i class="fa-regular fa-clock"></i></div>
+                <div>
+                  <strong class="info-heading">Working Timings</strong>
+                  <p class="info-text">
+                    <strong>Monday to Saturday:</strong> 9:00 AM — 8:30 PM<br />
+                    <span class="badge-open"><i class="fa-solid fa-circle"></i> Open 6 Days A Week</span><br />
+                    <span style="display: inline-flex; align-items: center; gap: 6px; color: #ef4444; font-size: 0.85rem; font-weight: 700; margin-top: 4px;">
+                      <i class="fa-solid fa-circle-xmark"></i> Sunday: Closed
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Instant Contact Buttons -->
+            <div class="contact-btn-group">
+              <a href="tel:+919887598016" class="btn-call-direct">
+                <i class="fa-solid fa-phone"></i> Call 98875-98016
+              </a>
+              <a href="https://wa.me/919887598016?text=Hello%20Friends%20Suzuki%20Center%2C%20I%20want%20to%20book%20a%20bike%20service%20in%20Sri%20Ganganagar.%0A%0ABike%20Model%3A%20%0AService%2FProblem%3A%20" target="_blank" rel="noopener noreferrer" class="btn-wa-direct">
+                <i class="fa-brands fa-whatsapp"></i> WhatsApp Us
+              </a>
+            </div>
+          </div>
+
+          <!-- Interactive Google Maps Card -->
+          <div class="map-card-wrapper">
+            <div class="map-header">
+              <div class="map-status">
+                <i class="fa-solid fa-compass"></i>
+                <span>Location: 35F Block, Sri Ganganagar, Rajasthan</span>
+              </div>
+              <a href="https://www.google.com/maps/search/Friends+Suzuki+Center+35F+Block+Sri+Ganganagar+Rajasthan" target="_blank" rel="noopener noreferrer" class="map-ext-link">
+                Open in Maps <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
+            </div>
+            
+            <div class="map-frame-container">
+              <!-- Google Maps Embed for Sri Ganganagar Rajasthan -->
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110185.74830303867!2d73.80524456956693!3d29.91924619421295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3917b51b32d04a79%3A0x6d9f8ecf4e183790!2sSri%20Ganganagar%2C%20Rajasthan%20335001!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Friends Suzuki Center 35F Block Sri Ganganagar Location">
+              </iframe>
+            </div>
+
+            <div class="map-footer-banner">
+              <i class="fa-solid fa-van-shuttle"></i>
+              <span>Need doorstep pickup in Sri Ganganagar? Call us directly on 98875-98016 or 98873-20149!</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============================================================== -->
+    <!-- 📄 7. FOOTER -->
+    <!-- =============================================================== -->
+    <footer class="site-footer">
+      <div class="container footer-container">
+        <div class="footer-brand">
+          <div class="brand-logo footer-logo">
+            <div class="logo-mark fsc-header-logo-wrap">
+              <img 
+                src="C:/Users/india/.gemini/antigravity/brain/bbf5953f-c421-4d90-a708-9dcb35469b47/.user_uploaded/media_1789379874933.jpg"
+                alt="FSC Logo"
+                class="fsc-header-logo-img"
+              />
+            </div>
+            <div class="logo-text">
+              <span class="name">FRIENDS SUZUKI CENTER</span>
+              <span class="tag">35F BLOCK, SRI GANGANAGAR</span>
+            </div>
+          </div>
+          <p class="footer-desc">
+            Your bike, our responsibility. 25 Years of Trust delivering precision engine tuning, genuine Suzuki spares, and trustworthy mechanical care for all scooters and bikes in Sri Ganganagar.
+          </p>
+          <div class="social-links">
+            <a href="tel:+919887598016" aria-label="Phone 1"><i class="fa-solid fa-phone"></i></a>
+            <a href="https://wa.me/919887598016" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="tel:+919887320149" aria-label="Phone 2"><i class="fa-solid fa-headset"></i></a>
+            <a href="https://www.google.com/maps/search/Friends+Suzuki+Center+35F+Block+Sri+Ganganagar+Rajasthan" target="_blank" rel="noopener noreferrer" aria-label="Location"><i class="fa-solid fa-map-location-dot"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Popular Services</h4>
+          <ul class="footer-links">
+            <li><a href="#services">General Bike Service + Wash (₹349)</a></li>
+            <li><a href="#services">Engine Overhaul & Tuning</a></li>
+            <li><a href="#services">Disc & Drum Brake Bleed</a></li>
+            <li><a href="#services">Suzuki Ecstar Oil Change</a></li>
+            <li><a href="#services">EFI Sensor & Self-Start Repair</a></li>
+            <li><a href="#services">Teflon & Foam Washing</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Suzuki Bikes Serviced</h4>
+          <ul class="footer-links">
+            <li><a href="#services">Suzuki Access 125</a></li>
+            <li><a href="#services">Suzuki Burgman Street 125</a></li>
+            <li><a href="#services">Suzuki Gixxer & Gixxer SF 250</a></li>
+            <li><a href="#services">Suzuki Avenis 125</a></li>
+            <li><a href="#services">Suzuki V-Strom SX 250</a></li>
+            <li><a href="#services">Suzuki Hayabusa & Superbikes</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Workshop Hours</h4>
+          <div class="hours-block">
+            <p><strong>Monday — Saturday:</strong></p>
+            <p class="time">9:00 AM — 8:30 PM</p>
+            <div class="status-open-pill">
+              <span class="dot"></span> Open 6 Days A Week
+            </div>
+            <p style="color: #ef4444; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px;">
+              <i class="fa-solid fa-circle-xmark"></i> Sunday: Closed
+            </p>
+            <p class="emergency-help">
+              <i class="fa-solid fa-phone"></i> Call: 98875-98016 / 98873-20149
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+          <p>© 2026 Friends Suzuki Center, 35F Block, Sri Ganganagar. All rights reserved.</p>
+          <p class="dev-tag">25 Years of Trust • Crafted for two-wheeler enthusiasts.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- =============================================================== -->
+    <!-- 📱 8. FLOATING STICKY ACTION BAR -->
+    <!-- =============================================================== -->
+    <div class="floating-quick-bar">
+      <button class="quick-action-btn open-booking-btn" title="Book Service" type="button">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span>Book Service</span>
+      </button>
+      <a href="tel:+919887598016" class="quick-action-btn call-action" title="Call 98875-98016">
+        <i class="fa-solid fa-phone"></i>
+        <span>Call</span>
+      </a>
+      <a href="https://wa.me/919887598016?text=Hello%20Friends%20Suzuki%20Center%2C%20I%20want%20to%20book%20a%20bike%20service%20in%20Sri%20Ganganagar.%0A%0ABike%20Model%3A%20%0AService%2FProblem%3A%20" target="_blank" rel="noopener noreferrer" class="quick-action-btn wa-action" title="WhatsApp 98875-98016">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+
+  </div> <!-- /#main-website -->
+
+  <!-- ================================================================= -->
+  <!-- 📅 9. INTERACTIVE SERVICE BOOKING MODAL -->
+  <!-- ================================================================= -->
+  <div id="booking-modal" class="modal-backdrop" aria-hidden="true" role="dialog">
+    <div class="modal-window">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal" type="button">&times;</button>
+      
+      <div class="modal-header">
+        <div class="modal-icon"><i class="fa-solid fa-calendar-check"></i></div>
+        <div>
+          <h3 class="modal-title">Book Bike Service</h3>
+          <p class="modal-subtitle">Friends Suzuki Center • 35F Block, Sri Ganganagar (25 Years Trust)</p>
+        </div>
+      </div>
+
+      <form id="booking-form" class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="cust-name"><i class="fa-solid fa-user"></i> Your Name *</label>
+            <input type="text" id="cust-name" required placeholder="e.g. Rahul Sharma" />
+          </div>
+          <div class="form-group">
+            <label for="cust-phone"><i class="fa-solid fa-phone"></i> Mobile Number *</label>
+            <input type="tel" id="cust-phone" required placeholder="e.g. 98875 XXXXX" pattern="[0-9]{10}" title="10-digit mobile number" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="bike-model"><i class="fa-solid fa-motorcycle"></i> Select Bike / Scooter *</label>
+            <select id="bike-model" required>
+              <option value="">-- Choose Your Two-Wheeler --</option>
+              <optgroup label="Suzuki Scooters">
+                <option value="Suzuki Access 125" selected>Suzuki Access 125 (Special / Ride Connect)</option>
+                <option value="Suzuki Burgman Street 125">Suzuki Burgman Street 125 / EX</option>
+                <option value="Suzuki Avenis 125">Suzuki Avenis 125</option>
+              </optgroup>
+              <optgroup label="Suzuki Motorcycles">
+                <option value="Suzuki Gixxer 155">Suzuki Gixxer 155 (Naked)</option>
+                <option value="Suzuki Gixxer SF 155">Suzuki Gixxer SF 155 (Faired)</option>
+                <option value="Suzuki Gixxer 250">Suzuki Gixxer 250</option>
+                <option value="Suzuki Gixxer SF 250">Suzuki Gixxer SF 250</option>
+                <option value="Suzuki V-Strom SX 250">Suzuki V-Strom SX 250 (Adventure)</option>
+                <option value="Suzuki Hayabusa">Suzuki Hayabusa GSX1300R</option>
+                <option value="Suzuki Intruder 150">Suzuki Intruder 150</option>
+              </optgroup>
+              <optgroup label="Other Two-Wheelers">
+                <option value="Honda Activa / Shine">Honda Activa / Shine / Unicorn</option>
+                <option value="Hero Splendor / HF Deluxe">Hero Splendor / Glamour / Passion</option>
+                <option value="Bajaj Pulsar">Bajaj Pulsar (150/180/NS200)</option>
+                <option value="TVS Jupiter / Apache">TVS Jupiter / Ntorq / Apache RTR</option>
+                <option value="Royal Enfield Classic / Bullet">Royal Enfield Classic 350 / Bullet</option>
+                <option value="Other Bike / Scooter">Other Two-Wheeler Model</option>
+              </optgroup>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="service-type"><i class="fa-solid fa-wrench"></i> Primary Service Needed *</label>
+            <select id="service-type" required>
+              <option value="General Bike Service + Washing (₹349)">General Bike Service + Washing (Starting ₹349)</option>
+              <option value="Engine Repair & Overhaul">Engine Repair & Sound Troubleshooting</option>
+              <option value="Oil Change & Lubrication">Suzuki Ecstar Oil Change & Chain Lube</option>
+              <option value="Brake System Service">Front/Rear Brake Overhaul & Pad Replacement</option>
+              <option value="Electrical & Battery Service">Electrical Diagnostics / Battery / Self-Start</option>
+              <option value="Full Maintenance & Detailing">Full Detailing, Anti-Rust & Teflon Polish</option>
+              <option value="Emergency Breakdown / Pickup">Emergency Sri Ganganagar Breakdown / Towing</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="service-date"><i class="fa-regular fa-calendar"></i> Preferred Service Date * <small style="color: #ef4444;">(Mon-Sat, Sun Closed)</small></label>
+            <input type="date" id="service-date" required />
+          </div>
+          <div class="form-group">
+            <label for="service-time"><i class="fa-regular fa-clock"></i> Preferred Time Slot</label>
+            <select id="service-time">
+              <option value="Morning Slot (9:30 AM - 12:00 PM)">Morning Slot (9:30 AM - 12:00 PM)</option>
+              <option value="Afternoon Slot (12:00 PM - 3:30 PM)">Afternoon Slot (12:00 PM - 3:30 PM)</option>
+              <option value="Evening Slot (3:30 PM - 7:00 PM)">Evening Slot (3:30 PM - 7:00 PM)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="service-notes"><i class="fa-regular fa-comment-dots"></i> Any Specific Complaint / Noise?</label>
+          <textarea id="service-notes" rows="2" placeholder="e.g. Engine making squeaking noise, front brake lever feels loose, pick-up issue..."></textarea>
+        </div>
+
+        <div class="pickup-checkbox-wrap">
+          <label class="checkbox-container">
+            <input type="checkbox" id="need-pickup" />
+            <span class="checkmark"></span>
+            <span>I need free Bike Pick-up & Drop in Sri Ganganagar city limits</span>
+          </label>
+        </div>
+
+        <div class="modal-submit-row">
+          <button type="submit" class="btn-submit-booking">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Confirm & Send via WhatsApp (98875-98016)</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="physics-intro.js"></script>
+  <script src="bike-3d.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
